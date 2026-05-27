@@ -91,3 +91,26 @@ def main():
 
 if __name__ == '__main__':
     main()
+import os
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+
+load_dotenv()
+TOKEN = os.getenv("MAX_BOT_TOKEN")
+
+def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    # Ваш код для приветствия и начала работы
+    pass
+
+def main():
+    application = Application.builder().token(TOKEN).build()
+    
+    # Обработчики команд и сообщений
+    application.add_handler(CommandHandler("start", start))
+    
+    # Другие обработчики сообщений
+    
+    application.run_polling()
+
+if __name__ == '__main__':
+    main()
